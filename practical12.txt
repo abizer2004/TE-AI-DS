@@ -1,0 +1,38 @@
+Practical 12 : Write a Simple Program in Scala Using Apache Spark Framework
+
+program by sir : 
+
+#activate spark shell
+
+spark-shell
+
+import org.apache.spark.sql.SparkSession
+object SparkExample {
+def main(args: Array[String]): Unit = {
+
+Step 1: Initialize Spark Session
+val spark = SparkSession.builder()
+.appName("Simple Spark Program")
+.config("spark.master", "local")
+.getOrCreate()
+
+Step 2: Load data from a CSV file into a DataFrame
+val df = spark.read.option("header", "true").csv("data/people.csv")
+
+Step 3: Show the first few rows of the DataFrame
+df.show()
+
+Step 4: Perform a simple transformation and action
+val ageData = df.filter(df("age") > 30).select("name", "age")
+
+Step 5: Show the filtered results
+ageData.show()
+
+Step 6: Group by and Aggregate Data
+val avgAge = df.groupBy("department").avg("age")
+avgAge.show()
+
+Stop the Spark session
+spark.stop()
+}
+}

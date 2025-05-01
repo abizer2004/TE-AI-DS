@@ -1,0 +1,38 @@
+Pracical 11 : Creating Databases and Tables, Inserting Data, and Running Simple Queries Using Impala
+
+#activate impala shell
+
+impala-shell
+
+Step 1: Creating a Database
+
+CREATE DATABASE test_db;
+
+Step 2: Creating a Table
+
+USE test_db;
+CREATE TABLE employees (
+id INT,
+name STRING,
+age INT,
+department STRING
+);
+
+Step 3: Inserting Data into the Table
+
+INSERT INTO employees VALUES (1, 'Alice', 30, 'HR');
+INSERT INTO employees VALUES (2, 'Bob', 35, 'Engineering');
+INSERT INTO employees VALUES (3, 'Charlie', 40, 'Marketing');
+
+Step 4: Querying Data
+
+-- Running a simple query to fetch all records from the table
+SELECT * FROM employees;
+
+-- Query to fetch employees from a specific department
+SELECT * FROM employees WHERE department = 'Engineering';
+
+Step 5: Dropping the Table and Database (Optional Cleanup)
+
+DROP TABLE employees;
+DROP DATABASE test_db;
